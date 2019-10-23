@@ -52,6 +52,7 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionColour"/>
+   <addaction name="actionLineWidth"/>
   </widget>
   <action name="actionPen">
    <property name="text">
@@ -66,6 +67,11 @@
   <action name="actionColour">
    <property name="text">
     <string>Colour</string>
+   </property>
+  </action>
+  <action name="actionLineWidth">
+   <property name="text">
+    <string>LineWidth</string>
    </property>
   </action>
  </widget>

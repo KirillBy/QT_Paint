@@ -18,6 +18,7 @@ public:
     explicit Paint(QWidget *parent = nullptr);
     ~Paint();
 
+
 private:
     Ui::Paint *ui;
 
@@ -30,6 +31,9 @@ private slots:
     void on_actionPen_triggered();
     void on_actionSwitchOFF_triggered();
     void on_actionColour_triggered();
+
+
+    void on_actionLineWidth_triggered();
 };
 
 #endif // PAINT_H

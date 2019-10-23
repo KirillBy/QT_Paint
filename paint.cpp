@@ -5,10 +5,12 @@ Paint::Paint(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::Paint)
 
 {
-    QBrush br; br.setColor(Qt::black);
+
     ui->setupUi(this);
     scene = new paintScene();       // Inicialize graffic scene
     ui->graphicsView->setScene(scene);  // Set graffic scene
+
+
 }
 
 Paint::~Paint()
@@ -38,4 +40,11 @@ scene->change_all_to_false();
 void Paint::on_actionColour_triggered()// change the colour by using QColorDialog
 {
 scene->change_colour();
+}
+
+
+
+void Paint::on_actionLineWidth_triggered()
+{
+    scene->set_line_width();
 }

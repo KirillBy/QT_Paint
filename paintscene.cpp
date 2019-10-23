@@ -1,9 +1,17 @@
 #include "paintscene.h"
 #include "paint.h"
+#define DEFAULTSIZEOFLINE 10
 paintScene::paintScene(QObject *parent) : QGraphicsScene(parent)
 {
 Pen = false; // pen switched off by default
 colour = Qt::black; //black colour set by default
+width = DEFAULTSIZEOFLINE; // defailt size of line is 10
+myComboBox = new QComboBox;
+myComboBox->addItems({"1", "2", "3", "4", "5","6", "7", "8", "9", "10",
+                     "11", "12", "13", "14", "15","16", "17", "18", "19", "20",
+                     "21", "22", "23", "24", "25","26", "27", "28", "29", "30",
+                      "35", "40", "45", "50"});
+
 }
 
 paintScene::~paintScene()
@@ -14,6 +22,12 @@ void paintScene::change_colour() //changing colour from colorDialog
 {
     QColorDialog *colorDialog = new QColorDialog();
     colour = colorDialog->getColor();
+}
+void paintScene::set_line_width() //changing width of line in ComboBox
+{
+
+    myComboBox->setGeometry(200, 200, 100, 100);
+    myComboBox->showPopup();
 }
 void paintScene::change_pen_to_true() // switch on Pen method
 {
@@ -45,14 +59,14 @@ void paintScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
    // Pen drawing here!!!!!  Paint lines using previous coordinates from our small ellipse
     if(this->Pen)
     {
-
-            br.setColor(colour);
+            width=myComboBox->currentText().toUInt(); //taking current number in ComboBox
+            br.setColor(colour);   //setting brush
             br.setStyle(Qt::SolidPattern);
             addLine(previousPoint.x(),
             previousPoint.y(),
             event->scenePos().x(),
             event->scenePos().y(),
-            QPen(br,10,Qt::SolidLine,Qt::RoundCap));
+            QPen(br,width,Qt::SolidLine,Qt::RoundCap));
 
     previousPoint = event->scenePos();  //Update our coordinates
      }
