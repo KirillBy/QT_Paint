@@ -35,10 +35,24 @@
     </property>
     <addaction name="actionPen"/>
     <addaction name="actionSwitchOFF"/>
+    <addaction name="separator"/>
+    <addaction name="separator"/>
    </widget>
    <addaction name="menuPaint_Mode"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionColour"/>
+  </widget>
   <action name="actionPen">
    <property name="text">
     <string>Pen</string>
@@ -47,6 +61,11 @@
   <action name="actionSwitchOFF">
    <property name="text">
     <string>SwitchOFF</string>
+   </property>
+  </action>
+  <action name="actionColour">
+   <property name="text">
+    <string>Colour</string>
    </property>
   </action>
  </widget>

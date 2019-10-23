@@ -5,6 +5,7 @@ Paint::Paint(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::Paint)
 
 {
+    QBrush br; br.setColor(Qt::black);
     ui->setupUi(this);
     scene = new paintScene();       // Inicialize graffic scene
     ui->graphicsView->setScene(scene);  // Set graffic scene
@@ -32,4 +33,9 @@ scene->change_pen_to_true(); //then switch on Pen
 void Paint::on_actionSwitchOFF_triggered()// turn off all instrument, by choising it from menu bar
 {
 scene->change_all_to_false();
+}
+
+void Paint::on_actionColour_triggered()// change the colour by using QColorDialog
+{
+scene->change_colour();
 }
