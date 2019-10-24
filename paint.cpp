@@ -9,7 +9,7 @@ Paint::Paint(QWidget *parent)
     ui->setupUi(this);
     scene = new paintScene();       // Inicialize graffic scene
     ui->graphicsView->setScene(scene);  // Set graffic scene
-
+    ui->toolBar->addWidget(scene->myComboBox); //Set LineWidth box
 
 }
 
@@ -42,9 +42,20 @@ void Paint::on_actionColour_triggered()// change the colour by using QColorDialo
 scene->change_colour();
 }
 
-
-
-void Paint::on_actionLineWidth_triggered()
+void Paint::on_actionOpen_triggered()//open image file
 {
-    scene->set_line_width();
+    scene->openfile();
+}
+
+void Paint::on_actionSave_as_triggered()//saving image file
+{
+    QString fileName= QFileDialog::getSaveFileName();
+        if (!fileName.isNull())
+        {
+            QPixmap pixMap = this->ui->graphicsView->grab();
+            pixMap.save(fileName);
+
+        }
+
+
 }

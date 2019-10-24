@@ -38,6 +38,14 @@
     <addaction name="separator"/>
     <addaction name="separator"/>
    </widget>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSave_as"/>
+   </widget>
+   <addaction name="menuFile"/>
    <addaction name="menuPaint_Mode"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -52,7 +60,6 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionColour"/>
-   <addaction name="actionLineWidth"/>
   </widget>
   <action name="actionPen">
    <property name="text">
@@ -65,16 +72,30 @@
    </property>
   </action>
   <action name="actionColour">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/Pictures/cq5dam.thumbnail.800.800.png</normaloff>:/Pictures/cq5dam.thumbnail.800.800.png</iconset>
+   </property>
    <property name="text">
     <string>Colour</string>
    </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ef2929;&quot;&gt;Colour&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
   </action>
-  <action name="actionLineWidth">
+  <action name="actionOpen">
    <property name="text">
-    <string>LineWidth</string>
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionSave_as">
+   <property name="text">
+    <string>Save as...</string>
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

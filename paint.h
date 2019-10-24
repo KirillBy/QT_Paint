@@ -31,9 +31,8 @@ private slots:
     void on_actionPen_triggered();
     void on_actionSwitchOFF_triggered();
     void on_actionColour_triggered();
-
-
-    void on_actionLineWidth_triggered();
+    void on_actionOpen_triggered();
+    void on_actionSave_as_triggered();
 };
 
 #endif // PAINT_H
