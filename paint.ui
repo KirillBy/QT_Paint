@@ -59,9 +59,15 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionPen"/>
+   <addaction name="actionRectangle"/>
    <addaction name="actionColour"/>
   </widget>
   <action name="actionPen">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/Pictures/Paint-Brush.png</normaloff>:/Pictures/Paint-Brush.png</iconset>
+   </property>
    <property name="text">
     <string>Pen</string>
    </property>
@@ -91,6 +97,15 @@
   <action name="actionSave_as">
    <property name="text">
     <string>Save as...</string>
+   </property>
+  </action>
+  <action name="actionRectangle">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/Pictures/rectangle.png</normaloff>:/Pictures/rectangle.png</iconset>
+   </property>
+   <property name="text">
+    <string>Rectangle</string>
    </property>
   </action>
  </widget>

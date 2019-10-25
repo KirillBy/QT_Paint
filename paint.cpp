@@ -59,3 +59,8 @@ void Paint::on_actionSave_as_triggered()//saving image file
 
 
 }
+
+void Paint::on_actionRectangle_triggered()
+{
+scene->change_rect_to_true();
+}

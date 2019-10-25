@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>../../Pictures/cq5dam.thumbnail.800.800.png</file>
+        <file>../../Pictures/Paint-Brush.png</file>
+        <file>../../Pictures/rectangle.png</file>
     </qresource>
 </RCC>
