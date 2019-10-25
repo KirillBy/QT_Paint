@@ -95,22 +95,29 @@ void paintScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
             QPen(br,width,Qt::SolidLine,Qt::RoundCap));
 
     previousPoint = event->scenePos();  //Update our coordinates
-
      }
-    //Rectangle drawing here!!!!!
 
+    //Rectangle drawing here!!!!!
     if(this->Rectangle)
     {
+        if((event->scenePos().x() > StartPos.x())  &&  (event->scenePos().y() > StartPos.y()))
+        {
             width=myComboBox->currentText().toUInt(); //taking current number in ComboBox
             br.setColor(colour);   //setting brush
             br.setStyle(Qt::SolidPattern);
-removeItem(rect);
-//addRect(StartPos.x(),StartPos.y(),(previousPoint.x()-StartPos.x()) ,(previousPoint.y()-StartPos.y()),QPen(Qt::white,width,Qt::SolidLine,Qt::RoundCap));
-rect = addRect(StartPos.x(),StartPos.y(), (event->scenePos().x()-StartPos.x()), ( event->scenePos().y()-StartPos.y()),QPen(br,width,Qt::SolidLine,Qt::RoundCap));
+            removeItem(Currentrect);
 
-    previousPoint = event->scenePos();  //Update our coordinates
-
+            {Saverect.setRect(StartPos.x(),StartPos.y(),(event->scenePos().x()-StartPos.x()),(event->scenePos().y()-StartPos.y()));}
+            Currentrect = addRect(StartPos.x(),StartPos.y(), (event->scenePos().x()-StartPos.x()), ( event->scenePos().y()-StartPos.y()),QPen(br,width,Qt::SolidLine,Qt::RoundCap));
+            previousPoint = event->scenePos();  //Update our coordinates
+        }
      }
+    }
 
+void paintScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+    if(this->Rectangle)
+    {
+            addRect(Saverect,QPen(br,width,Qt::SolidLine,Qt::RoundCap));
+     }
 }
-
