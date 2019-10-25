@@ -4,9 +4,7 @@
 /////////////////////////////////////////////////////////////// Constructor
 paintScene::paintScene(QObject *parent) : QGraphicsScene(parent)
 {
-Pen = false; // pen switched off by default
-Rectangle = false; // rectangle switched off by default
-Ellipse = false; // ellipse switched off by default
+CurrentInstrument = Off;
 colour = Qt::black; //black colour set by default
 myComboBox->addItems({"1", "2", "3", "4", "5","6", "7", "8", "9", "10",
                      "11", "12", "13", "14", "15","16", "17", "18", "19", "20",
@@ -48,30 +46,29 @@ void paintScene::openfile()//open image file method
 void paintScene::change_pen_to_true() // switch on Pen method
 {
     change_all_to_false();
-    Pen = true;
+   CurrentInstrument = Pen;
 }
 
 void paintScene::change_rect_to_true()// switch on Rectangle method
 {
     change_all_to_false();
-    Rectangle = true;
+    CurrentInstrument = Rectangle;
 }
 
 void paintScene::change_ellipse_to_true()// switch on Ellipse method
 {
     change_all_to_false();
-    Ellipse = true;
+    CurrentInstrument = Ellipse;
 }
 void paintScene::change_all_to_false() // switch all instrument off method
 {
-    Rectangle = false;
-    Pen = false;
-    Ellipse = false;
+    CurrentInstrument = Off;
+
 }
 ///////////////////////////////////////////////////////////////
 void paintScene::mousePressEvent(QGraphicsSceneMouseEvent *event)//Start poing getting here!!!
 {
-    if(this->Pen || this-Rectangle || this->Ellipse) //if button is pressed and instrument is choisen, paint very small ellipse to fix the coordinates
+    if(CurrentInstrument != Off) //if button is pressed and instrument is choisen, paint very small ellipse to fix the coordinates
     {
     addEllipse(event->scenePos().x() - 1,
                event->scenePos().y() - 1,
@@ -89,40 +86,32 @@ void paintScene::mousePressEvent(QGraphicsSceneMouseEvent *event)//Start poing g
 /////////////////////////////////////////////////////////////
 void paintScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-
-   // Pen drawing here!!!!!  Paint lines using previous coordinates from our small ellipse
-    if(this->Pen)
+    switch (CurrentInstrument)
     {
-            width=myComboBox->currentText().toUInt(); //taking current number in ComboBox
-            br.setColor(colour);   //setting brush
-            br.setStyle(Qt::SolidPattern);
-            addLine(previousPoint.x(),
-            previousPoint.y(),
-            event->scenePos().x(),
-            event->scenePos().y(),
-            QPen(br,width,Qt::SolidLine,Qt::RoundCap));
-
+    case(Pen):// Pen drawing here!!!!!  Paint lines using previous coordinates from our small ellip
+        width=myComboBox->currentText().toUInt(); //taking current number in ComboBox
+        br.setColor(colour);   //setting brush
+        br.setStyle(Qt::SolidPattern);
+        addLine(previousPoint.x(),
+        previousPoint.y(),
+        event->scenePos().x(),
+        event->scenePos().y(),
+    QPen(br,width,Qt::SolidLine,Qt::RoundCap));
     previousPoint = event->scenePos();  //Update our coordinates
-     }
-
-    //Rectangle drawing here!!!!!
-    if(this->Rectangle)
-    {
+        break;
+    case(Rectangle):  //Rectangle drawing here!!!!!
         if((event->scenePos().x() > StartPos.x())  &&  (event->scenePos().y() > StartPos.y()))
         {
             width=myComboBox->currentText().toUInt(); //taking current number in ComboBox
             br.setColor(colour);   //setting brush
             br.setStyle(Qt::SolidPattern);
             removeItem(Currentrect);
-
             Saverect.setRect(StartPos.x(),StartPos.y(),(event->scenePos().x()-StartPos.x()),(event->scenePos().y()-StartPos.y()));
             Currentrect = addRect(StartPos.x(),StartPos.y(), (event->scenePos().x()-StartPos.x()), ( event->scenePos().y()-StartPos.y()),QPen(br,width,Qt::SolidLine,Qt::RoundCap));
             previousPoint = event->scenePos();  //Update our coordinates
         }
-     }
-    //Ellipse drawing here!!!!
-    if(this->Ellipse)
-    {
+        break;
+    case(Ellipse): //Ellipse drawing here!!!!
         width=myComboBox->currentText().toUInt(); //taking current number in ComboBox
         br.setColor(colour);   //setting brush
         br.setStyle(Qt::SolidPattern);
@@ -130,17 +119,21 @@ void paintScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
         Saveellipse.setRect(StartPos.x(),StartPos.y(),(event->scenePos().x()-StartPos.x()),(event->scenePos().y()-StartPos.y()));
         Currentellipse = addEllipse(StartPos.x(),StartPos.y(), (event->scenePos().x()-StartPos.x()), ( event->scenePos().y()-StartPos.y()),QPen(br,width,Qt::SolidLine,Qt::RoundCap));
         previousPoint = event->scenePos();  //Update our coordinates
+        break;
     }
+
+
 }
 
 void paintScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-    if(this->Rectangle)
+    switch (CurrentInstrument)
     {
-            addRect(Saverect,QPen(br,width,Qt::SolidLine,Qt::RoundCap));
-     }
-    if(this->Ellipse)
-    {
-            addEllipse(Saveellipse,QPen(br,width,Qt::SolidLine,Qt::RoundCap));
-     }
+    case(Rectangle):
+       addRect(Saverect,QPen(br,width,Qt::SolidLine,Qt::RoundCap));
+        break;
+    case(Ellipse):
+        addEllipse(Saveellipse,QPen(br,width,Qt::SolidLine,Qt::RoundCap));
+        break;
+    }
 }

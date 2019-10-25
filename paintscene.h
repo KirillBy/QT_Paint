@@ -23,9 +23,11 @@ public:
 
 private:
     QPointF     previousPoint;      // Coordinates of previuos point
-    bool Pen;       //Pen switch off/on
-    bool Rectangle; //Rectangle switch off/on
-    bool Ellipse; //Ellipse switch off/on
+    //bool Pen;       //Pen switch off/on
+    //bool Rectangle; //Rectangle switch off/on
+    //bool Ellipse; //Ellipse switch off/on
+    enum TypeOfPaint  {Off, Pen, Rectangle, Ellipse};
+    TypeOfPaint CurrentInstrument;
     QColor colour; //colour of line
     QBrush br;  //brush for painting
     qreal width; // size of line
