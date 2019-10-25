@@ -17,6 +17,7 @@ public:
     void change_rect_to_true();//switch on Rectangle
     void change_ellipse_to_true();//switch on Ellipse
     void change_line_to_true();//switch on line
+    void change_eraser_to_true();//switch on eraser
     void change_colour(); //change colour
     QComboBox *myComboBox= new QComboBox; //Declarate ComboBox  with size of line
     void openfile();//open image file
@@ -27,7 +28,7 @@ private:
     //bool Pen;       //Pen switch off/on
     //bool Rectangle; //Rectangle switch off/on
     //bool Ellipse; //Ellipse switch off/on
-    enum TypeOfPaint  {Off, Pen, Rectangle, Ellipse, Line};
+    enum TypeOfPaint  {Off, Pen, Rectangle, Ellipse, Line, Eraser};
     TypeOfPaint CurrentInstrument;
     QColor colour; //colour of line
     QBrush br;  //brush for painting

@@ -6,5 +6,8 @@
         <file>resourses/rectangle.png</file>
         <file>resourses/oval.png</file>
         <file>resourses/line.png</file>
+        <file>resourses/clear.png</file>
+        <file>resourses/eraser.png</file>
+        <file>resourses/eraser.ico</file>
     </qresource>
 </RCC>

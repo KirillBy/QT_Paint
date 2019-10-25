@@ -74,3 +74,14 @@ void Paint::on_actionLine_triggered()
 {
     scene->change_line_to_true();
 }
+
+void Paint::on_actionClear_All_triggered()
+{
+    scene->clear();
+    scene->change_all_to_false();
+}
+
+void Paint::on_actionEraser_triggered()
+{
+    scene->change_eraser_to_true();
+}

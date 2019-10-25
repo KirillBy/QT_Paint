@@ -65,6 +65,11 @@ void paintScene::change_line_to_true()
 {
     CurrentInstrument = Line;
 }
+
+void paintScene::change_eraser_to_true()
+{
+    CurrentInstrument = Eraser;
+}
 void paintScene::change_all_to_false() // switch all instrument off method
 {
 
@@ -97,6 +102,17 @@ void paintScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     case(Pen):// Pen drawing here!!!!!  Paint lines using previous coordinates from our small ellip
         width=myComboBox->currentText().toUInt(); //taking current number in ComboBox
         br.setColor(colour);   //setting brush
+        br.setStyle(Qt::SolidPattern);
+        addLine(previousPoint.x(),
+        previousPoint.y(),
+        event->scenePos().x(),
+        event->scenePos().y(),
+    QPen(br,width,Qt::SolidLine,Qt::RoundCap));
+    previousPoint = event->scenePos();  //Update our coordinates
+        break;
+    case(Eraser):// Eraser here!!!!!  Paint lines using previous coordinates from our small ellip
+        width=myComboBox->currentText().toUInt(); //taking current number in ComboBox
+        br.setColor(Qt::white);   //setting brush
         br.setStyle(Qt::SolidPattern);
         addLine(previousPoint.x(),
         previousPoint.y(),

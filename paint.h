@@ -35,6 +35,8 @@ private slots:
     void on_actionRectangle_triggered();
     void on_actionEllipse_triggered();
     void on_actionLine_triggered();
+    void on_actionClear_All_triggered();
+    void on_actionEraser_triggered();
 };
 
 #endif // PAINT_H
