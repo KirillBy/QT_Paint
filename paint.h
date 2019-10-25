@@ -5,7 +5,6 @@
 #include <QResizeEvent>
 #include <paintscene.h>
 #include <QMainWindow>
-#include <user_choice.h>
 namespace Ui {
 class Paint;
 }

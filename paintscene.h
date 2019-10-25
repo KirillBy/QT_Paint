@@ -3,7 +3,6 @@
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
 #include <QDebug>
-#include "user_choice.h"
 #include <QtWidgets>
 class paintScene : public QGraphicsScene
 {
