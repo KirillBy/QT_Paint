@@ -64,3 +64,8 @@ void Paint::on_actionRectangle_triggered()
 {
 scene->change_rect_to_true();
 }
+
+void Paint::on_actionEllipse_triggered()
+{
+scene->change_ellipse_to_true();
+}

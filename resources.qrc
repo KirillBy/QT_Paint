@@ -4,5 +4,6 @@
         <file>resourses/Delete.png</file>
         <file>resourses/Paint-Brush.png</file>
         <file>resourses/rectangle.png</file>
+        <file>resourses/oval.png</file>
     </qresource>
 </RCC>
