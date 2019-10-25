@@ -70,16 +70,16 @@
   <action name="actionPen">
    <property name="icon">
     <iconset resource="resources.qrc">
-     <normaloff>:/Pictures/Paint-Brush.png</normaloff>:/Pictures/Paint-Brush.png</iconset>
+     <normaloff>:/resourses/Paint-Brush.png</normaloff>:/resourses/Paint-Brush.png</iconset>
    </property>
    <property name="text">
-    <string>Pen</string>
+    <string>Paint Brush</string>
    </property>
   </action>
   <action name="actionSwitchOFF">
    <property name="icon">
     <iconset resource="resources.qrc">
-     <normaloff>:/Pictures/Delete.png</normaloff>:/Pictures/Delete.png</iconset>
+     <normaloff>:/resourses/Delete.png</normaloff>:/resourses/Delete.png</iconset>
    </property>
    <property name="text">
     <string>SwitchOFF</string>
@@ -88,7 +88,7 @@
   <action name="actionColour">
    <property name="icon">
     <iconset resource="resources.qrc">
-     <normaloff>:/Pictures/cq5dam.thumbnail.800.800.png</normaloff>:/Pictures/cq5dam.thumbnail.800.800.png</iconset>
+     <normaloff>:/resourses/cq5dam.thumbnail.800.800.png</normaloff>:/resourses/cq5dam.thumbnail.800.800.png</iconset>
    </property>
    <property name="text">
     <string>Colour</string>
@@ -110,7 +110,7 @@
   <action name="actionRectangle">
    <property name="icon">
     <iconset resource="resources.qrc">
-     <normaloff>:/Pictures/rectangle.png</normaloff>:/Pictures/rectangle.png</iconset>
+     <normaloff>:/resourses/rectangle.png</normaloff>:/resourses/rectangle.png</iconset>
    </property>
    <property name="text">
     <string>Rectangle</string>
