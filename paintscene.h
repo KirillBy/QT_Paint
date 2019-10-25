@@ -16,6 +16,7 @@ public:
     void change_pen_to_true(); //switch on Pen
     void change_rect_to_true();//switch on Rectangle
     void change_ellipse_to_true();//switch on Ellipse
+    void change_line_to_true();//switch on line
     void change_colour(); //change colour
     QComboBox *myComboBox= new QComboBox; //Declarate ComboBox  with size of line
     void openfile();//open image file
@@ -26,7 +27,7 @@ private:
     //bool Pen;       //Pen switch off/on
     //bool Rectangle; //Rectangle switch off/on
     //bool Ellipse; //Ellipse switch off/on
-    enum TypeOfPaint  {Off, Pen, Rectangle, Ellipse};
+    enum TypeOfPaint  {Off, Pen, Rectangle, Ellipse, Line};
     TypeOfPaint CurrentInstrument;
     QColor colour; //colour of line
     QBrush br;  //brush for painting
@@ -34,6 +35,8 @@ private:
     QPointF StartPos;//Start point for ellipse, circle, rectangle
     QGraphicsRectItem *Currentrect = new QGraphicsRectItem; //for showing intermedia rectangle
     QGraphicsEllipseItem *Currentellipse = new QGraphicsEllipseItem; //for showing intermedia rectangle
+    QGraphicsLineItem *CurrentLine = new QGraphicsLineItem; //for showing intermedia line
+    QLineF SaveLine;
     QRectF Saverect;
     QRectF Saveellipse;
 

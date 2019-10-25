@@ -69,3 +69,8 @@ void Paint::on_actionEllipse_triggered()
 {
 scene->change_ellipse_to_true();
 }
+
+void Paint::on_actionLine_triggered()
+{
+    scene->change_line_to_true();
+}

@@ -60,8 +60,14 @@ void paintScene::change_ellipse_to_true()// switch on Ellipse method
     change_all_to_false();
     CurrentInstrument = Ellipse;
 }
+
+void paintScene::change_line_to_true()
+{
+    CurrentInstrument = Line;
+}
 void paintScene::change_all_to_false() // switch all instrument off method
 {
+
     CurrentInstrument = Off;
 
 }
@@ -120,6 +126,15 @@ void paintScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
         Currentellipse = addEllipse(StartPos.x(),StartPos.y(), (event->scenePos().x()-StartPos.x()), ( event->scenePos().y()-StartPos.y()),QPen(br,width,Qt::SolidLine,Qt::RoundCap));
         previousPoint = event->scenePos();  //Update our coordinates
         break;
+    case(Line):
+        width=myComboBox->currentText().toUInt(); //taking current number in ComboBox
+        br.setColor(colour);   //setting brush
+        br.setStyle(Qt::SolidPattern);
+        removeItem(CurrentLine);
+        SaveLine.setLine(StartPos.x(),StartPos.y(),event->scenePos().x(),event->scenePos().y());
+        CurrentLine = addLine(StartPos.x(),StartPos.y(),event->scenePos().x(),event->scenePos().y(),QPen(br,width,Qt::SolidLine,Qt::RoundCap));
+        previousPoint = event->scenePos();  //Update our coordinates
+        break;
     }
 
 
@@ -134,6 +149,9 @@ void paintScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         break;
     case(Ellipse):
         addEllipse(Saveellipse,QPen(br,width,Qt::SolidLine,Qt::RoundCap));
+        break;
+    case(Line):
+        addLine(SaveLine,QPen(br,width,Qt::SolidLine,Qt::RoundCap));
         break;
     }
 }
