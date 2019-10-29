@@ -7,9 +7,15 @@ Paint::Paint(QWidget *parent)
 {
 
     ui->setupUi(this);
+
     scene = new paintScene();       // Inicialize graffic scene
     ui->graphicsView->setScene(scene);  // Set graffic scene
+
     ui->toolBar->addWidget(scene->myComboBox); //Set LineWidth box
+
+
+
+      this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
 }
 
@@ -19,27 +25,17 @@ Paint::~Paint()
 }
 
 
-
 void Paint::resizeEvent(QResizeEvent *event)   // Making correct size of scene.
 {
-    scene->setSceneRect(0,0, ui->graphicsView->width() - 20, ui->graphicsView->height() - 20);
+   scene-> setSceneRect(0,0, ui->graphicsView->width() - 1000, ui->graphicsView->height() - 1000);
+
     QWidget::resizeEvent(event);  // correct resizing our graffic scene
 }
 
-void Paint::on_actionPen_triggered() // switch on Pen instrument, by choising it from menu bar
-{
-scene->change_all_to_false(); //first we need to switch off all instruments
-scene->change_pen_to_true(); //then switch on Pen
-}
-
-void Paint::on_actionSwitchOFF_triggered()// turn off all instrument, by choising it from menu bar
-{
-scene->change_all_to_false();
-}
 
 void Paint::on_actionColour_triggered()// change the colour by using QColorDialog
 {
-scene->change_colour();
+    scene->change_colour();
 }
 
 void Paint::on_actionOpen_triggered()//open image file
@@ -56,32 +52,32 @@ void Paint::on_actionSave_as_triggered()//saving image file
             pixMap.save(fileName);
 
         }
-
-
+}
+void Paint::on_actionPen_triggered() // switch on Pen instrument, by choising it from menu bar
+{
+    scene->draw.push_back(new DrawPenCommand(scene));
 }
 
 void Paint::on_actionRectangle_triggered()
 {
-scene->change_rect_to_true();
+        scene->draw.push_back(new DrawRectangleCommand(scene));
 }
 
 void Paint::on_actionEllipse_triggered()
 {
-scene->change_ellipse_to_true();
+        scene->draw.push_back(new DrawEllipseCommand(scene));
 }
 
 void Paint::on_actionLine_triggered()
 {
-    scene->change_line_to_true();
+        scene->draw.push_back(new DrawLineCommand(scene));
 }
 
 void Paint::on_actionClear_All_triggered()
 {
-    scene->clear();
-    scene->change_all_to_false();
+       scene->clear();
 }
-
 void Paint::on_actionEraser_triggered()
 {
-    scene->change_eraser_to_true();
+       scene->draw.push_back(new DrawEraseCommand(scene));
 }

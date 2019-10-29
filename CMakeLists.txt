@@ -21,6 +21,8 @@ add_executable(QT_PAINT
   paintscene.cpp
   paintscene.h
   resources.qrc
+  command.cpp
+  command.h
 )
 
 target_link_libraries(QT_PAINT PRIVATE Qt5::Widgets)

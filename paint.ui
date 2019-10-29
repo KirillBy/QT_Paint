@@ -61,7 +61,6 @@
    <addaction name="separator"/>
    <addaction name="actionClear_All"/>
    <addaction name="separator"/>
-   <addaction name="actionSwitchOFF"/>
    <addaction name="separator"/>
    <addaction name="actionColour"/>
    <addaction name="separator"/>
@@ -73,15 +72,6 @@
    </property>
    <property name="text">
     <string>Paint Brush</string>
-   </property>
-  </action>
-  <action name="actionSwitchOFF">
-   <property name="icon">
-    <iconset resource="resources.qrc">
-     <normaloff>:/resourses/Delete.png</normaloff>:/resourses/Delete.png</iconset>
-   </property>
-   <property name="text">
-    <string>SwitchOFF</string>
    </property>
   </action>
   <action name="actionColour">
