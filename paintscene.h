@@ -26,6 +26,8 @@ private:
 public:
     QVector<Command*> draw;// vector of drawing command
     QComboBox *myComboBox= new QComboBox; //Declarate ComboBox  with size of line
+    QScrollBar *myScrollBar = new  QScrollBar;
+
 };
 
 #endif // PAINTSCENE_H

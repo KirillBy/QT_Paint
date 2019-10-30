@@ -12,10 +12,10 @@ Paint::Paint(QWidget *parent)
     ui->graphicsView->setScene(scene);  // Set graffic scene
 
     ui->toolBar->addWidget(scene->myComboBox); //Set LineWidth box
+   ui->graphicsView->QAbstractScrollArea::scrollBarWidgets(Qt::AlignRight);
+   ui->graphicsView->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    scene-> setSceneRect(0, 0, ui->graphicsView->width(), ui->graphicsView->height());
 
-
-
-      this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
 }
 
@@ -27,9 +27,8 @@ Paint::~Paint()
 
 void Paint::resizeEvent(QResizeEvent *event)   // Making correct size of scene.
 {
-   scene-> setSceneRect(0,0, ui->graphicsView->width() - 1000, ui->graphicsView->height() - 1000);
 
-    QWidget::resizeEvent(event);  // correct resizing our graffic scene
+   QWidget::resizeEvent(event);  // correct resizing our graffic scene
 }
 
 
